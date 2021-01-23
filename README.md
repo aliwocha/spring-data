@@ -1,0 +1,1 @@
+## **DeviceRentalShopApp (javastart.pl)**
