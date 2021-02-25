@@ -9,6 +9,7 @@ import pl.javastart.repository.CategoryRepository;
 import pl.javastart.repository.DeviceRepository;
 
 import javax.transaction.Transactional;
+import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
 
@@ -37,6 +38,18 @@ public class DeviceService {
         }
     }
 
+    public void searchDevice() {
+        System.out.println("Wyszukaj urządzenie wpisując jego nazwę lub jej fragment:");
+        List<Device> foundDevices = deviceRepository
+                .findALlByNameContainingIgnoreCase(scanner.nextLine());
+        if(!foundDevices.isEmpty()) {
+            System.out.println("Znalezione urządzenia:");
+            foundDevices.forEach(System.out::println);
+        } else {
+            System.out.println("Brak urządzeń o podanej nazwie");
+        }
+    }
+
     private Device readDevice() {
         Device device = new Device();
         System.out.println("Nazwa urządzenia:");
@@ -47,12 +60,11 @@ public class DeviceService {
         device.setPrice(scanner.nextDouble());
         System.out.println("Ilość(szt) urządzeń");
         device.setQuantity(scanner.nextInt());
-        System.out.println("Kategoria urządzenia:");
-        Long categoryId = scanner.nextLong();
-        Optional<Category> category = categoryRepository.findById(categoryId);
         scanner.nextLine();
+        System.out.println("Kategoria urządzenia:");
+        Optional<Category> category = categoryRepository.findByNameIgnoreCase(scanner.nextLine());
         category.ifPresentOrElse(device::setCategory, () -> {
-            throw new CategoryNotFoundException("Kategoria o podanym id nie istnieje");
+            throw new CategoryNotFoundException("Kategoria o podanej nazwie nie istnieje");
         });
         return device;
     }

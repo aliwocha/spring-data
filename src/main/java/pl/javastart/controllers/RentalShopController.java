@@ -20,7 +20,8 @@ public class RentalShopController {
     private static final int DELETE_DEVICE = 5;
     private static final int DELETE_CATEGORY = 6;
     private static final int DELETE_CLIENT = 7;
-    private static final int CLOSE_APP = 8;
+    private static final int SEARCH_DEVICE = 8;
+    private static final int CLOSE_APP = 9;
 
     private final Scanner scanner;
     private final RentService rentService;
@@ -57,7 +58,8 @@ public class RentalShopController {
         System.out.println("5 - Usuń urządzenie");
         System.out.println("6 - Usuń kategorię");
         System.out.println("7 - Usuń klienta");
-        System.out.println("8 - Koniec");
+        System.out.println("8 - Wyszukiwarka urządzeń");
+        System.out.println("9 - Koniec");
         System.out.println("Podaj ID opcji:");
     }
 
@@ -98,6 +100,9 @@ public class RentalShopController {
                 break;
             case DELETE_CLIENT:
                 clientService.deleteClient();
+                break;
+            case SEARCH_DEVICE:
+                deviceService.searchDevice();
                 break;
             case CLOSE_APP:
                 close();

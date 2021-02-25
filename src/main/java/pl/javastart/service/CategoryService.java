@@ -1,6 +1,7 @@
 package pl.javastart.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 import pl.javastart.entity.Category;
 import pl.javastart.repository.CategoryRepository;
@@ -22,8 +23,12 @@ public class CategoryService {
 
     public void addCategory() {
         Category category = readCategory();
-        categoryRepository.save(category);
-        System.out.println("Dodano kategorię\n" + category);
+        try {
+            categoryRepository.save(category);
+            System.out.println("Dodano kategorię\n" + category);
+        } catch(DataIntegrityViolationException e) {
+            System.err.println("Nie dodano kategorii. Podana nazwa kategorii już istnieje");
+        }
     }
 
     private Category readCategory() {

@@ -42,12 +42,11 @@ public class RentService {
     }
 
     private void rentDevice() {
-        System.out.println("Podaj id klienta, który wypożycza urządzenie:");
-        Long clientId = scanner.nextLong();
+        System.out.println("Podaj pesel klienta, który wypożycza urządzenie:");
+        String pesel = scanner.nextLine();
+        Optional<Client> client = clientRepository.findByPesel(pesel);
         System.out.println("Podaj id urządzenia do wypożyczenia:");
         Long deviceId = scanner.nextLong();
-
-        Optional<Client> client = clientRepository.findById(clientId);
         Optional<Device> device = deviceRepository.findById(deviceId);
 
         if(client.isPresent()) {
@@ -60,8 +59,8 @@ public class RentService {
                 throw new RentException("Brak urządzenia o wskazanym id");
             });
         } else {
-            throw new RentException("Brak klienta o wskazanym id");
+            throw new RentException("Brak klienta o wskazanym numerze pesel");
         }
-        System.out.println("Wypożyczono urządzenie o id=" + deviceId + " klientowi o id=" + clientId);
+        System.out.println("Wypożyczono urządzenie o id=" + deviceId + " klientowi o peselu " + pesel);
     }
 }
