@@ -32,4 +32,10 @@ mvnw.cmd spring-boot:run
 ```
 3. Go to the following page in your browser to see database tables: [http://localhost:8080/h2-console](http://localhost:8080/h2-console)
 
-4. Use default options to log in to H2 database: username: "sa", password: "[blank]"
+4. Use default values to log in to H2 database:
+
+   JDBC URL: *"jdbc:h2:mem:testdb"*
+
+   username: *"sa"*
+
+   password: *"[blank]"*
