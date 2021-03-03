@@ -11,6 +11,12 @@ Main features of the app:
 * searching a device by its name (or part of a name)
 * integration with H2 database
 
+### **Technology used:**
+* Java 11
+* SpringBoot
+* Hibernate
+* H2
+
 ### **How to run:**
 1. Clone the repository onto your own computer.
 
