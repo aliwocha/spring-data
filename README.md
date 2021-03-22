@@ -1,4 +1,4 @@
-## **Device Rental Shop App**
+# **Device Rental Shop App**
 
 The app is for managing a device rental shop.
 
@@ -11,22 +11,22 @@ Main features of the app:
 * searching a device by its name (or part of a name)
 * integration with H2 database
 
-### **Technology used:**
+## **Technology used:**
 * Java 11
 * SpringBoot
 * Hibernate
 * H2
 
-### **How to run:**
+## **How to run:**
 1. Clone the repository onto your own computer.
 
 2. Go to the main folder of the project and run this command:
 
-*for the Unix system:
+* for the Unix system:
 ```
 ./mvnw spring-boot:run
 ```
-*for the Windows CMD:
+* for the Windows CMD:
 ```
 mvnw.cmd spring-boot:run
 ```
