@@ -14,6 +14,7 @@ Main features of the app:
 ## **Technology used:**
 * Java 11
 * SpringBoot
+* Spring Data JPA
 * Hibernate
 * H2
 
